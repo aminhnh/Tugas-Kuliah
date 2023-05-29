@@ -8,7 +8,7 @@ def KS(n, C):
     if arr[n][C] != None:
     # if arr[n][C] != 0:
         return arr[n][C]
-    if n == 0 or C == 0:
+    if n == -1 or C == 0:
         result = 0
     elif w[n] > C:
         result = KS(n-1, C)
@@ -20,13 +20,13 @@ def KS(n, C):
     return result
 
 n = 3+3+5+10+5
-w = [None] + 3*[2360] + 3*[2120] + 5*[1890] + 10*[3770] + 5*[2870]
-v = [None] + 3*[91] + 3*[71] + 5*[105] + 10*[103] + 5*[96]
+w = 3*[2360] + 3*[2120] + 5*[1890] + 10*[3770] + 5*[2870]
+v = 3*[91] + 3*[71] + 5*[105] + 10*[103] + 5*[96]
 C = 25000
-arr = np.zeros((n+1, C+1))
-arr = [[None for j in range(C+1)] for i in range(n+1)]
+arr = np.zeros((n, C))
+arr = [[None for j in range(C)] for i in range(n)]
 
-a = KS(n, C)
+a = KS(n-1, C-1)
 print(a)
 
 
